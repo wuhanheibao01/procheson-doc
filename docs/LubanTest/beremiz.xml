@@ -1,0 +1,6 @@
+<?xml version='1.0' encoding='utf-8'?>
+<BeremizRoot xmlns:xsd="http://www.w3.org/2001/XMLSchema" URI_location="ERPC://192.168.177.177:12345">
+  <TargetType>
+    <Gm2xx/>
+  </TargetType>
+</BeremizRoot>

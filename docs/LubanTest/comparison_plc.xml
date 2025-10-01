@@ -1,0 +1,481 @@
+<?xml version='1.0' encoding='utf-8'?>
+<project xmlns="http://www.plcopen.org/xml/tc6_0201" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xhtml="http://www.w3.org/1999/xhtml" xmlns:ns1="http://www.plcopen.org/xml/tc6_0201">
+  <fileHeader companyName="测试人员：汪勇强" productName="比较指令测试" productVersion="1" creationDateTime="2025-08-30T16:00:00"/>
+  <contentHeader name="Device (Win32)" modificationDateTime="2025-08-30T16:00:00">
+    <coordinateInfo>
+      <fbd>
+        <scaling x="8" y="8"/>
+      </fbd>
+      <ld>
+        <scaling x="8" y="8"/>
+      </ld>
+      <sfc>
+        <scaling x="8" y="8"/>
+      </sfc>
+    </coordinateInfo>
+  </contentHeader>
+  <types>
+    <dataTypes/>
+    <pous>
+      <pou name="ComparisonInstructionsTest" pouType="program">
+        <interface>
+          <localVars>
+            <variable name="Enable">
+              <type>
+                <BOOL/>
+              </type>
+            </variable>
+            <variable name="Complete">
+              <type>
+                <BOOL/>
+              </type>
+            </variable>
+            <variable name="IntA">
+              <type>
+                <INT/>
+              </type>
+            </variable>
+            <variable name="IntB">
+              <type>
+                <INT/>
+              </type>
+            </variable>
+            <variable name="IntC">
+              <type>
+                <INT/>
+              </type>
+            </variable>
+            <variable name="IntMin">
+              <type>
+                <INT/>
+              </type>
+            </variable>
+            <variable name="IntMax">
+              <type>
+                <INT/>
+              </type>
+            </variable>
+            <variable name="RealA">
+              <type>
+                <REAL/>
+              </type>
+            </variable>
+            <variable name="RealB">
+              <type>
+                <REAL/>
+              </type>
+            </variable>
+            <variable name="RealC">
+              <type>
+                <REAL/>
+              </type>
+            </variable>
+            <variable name="RealMin">
+              <type>
+                <REAL/>
+              </type>
+            </variable>
+            <variable name="RealMax">
+              <type>
+                <REAL/>
+              </type>
+            </variable>
+            <variable name="Selector">
+              <type>
+                <BOOL/>
+              </type>
+            </variable>
+            <variable name="EQIntResult">
+              <type>
+                <BOOL/>
+              </type>
+            </variable>
+            <variable name="EQRealResult">
+              <type>
+                <BOOL/>
+              </type>
+            </variable>
+            <variable name="NEIntResult">
+              <type>
+                <BOOL/>
+              </type>
+            </variable>
+            <variable name="NERealResult">
+              <type>
+                <BOOL/>
+              </type>
+            </variable>
+            <variable name="LTIntResult">
+              <type>
+                <BOOL/>
+              </type>
+            </variable>
+            <variable name="LTRealResult">
+              <type>
+                <BOOL/>
+              </type>
+            </variable>
+            <variable name="LEIntResult">
+              <type>
+                <BOOL/>
+              </type>
+            </variable>
+            <variable name="LERealResult">
+              <type>
+                <BOOL/>
+              </type>
+            </variable>
+            <variable name="GTIntResult">
+              <type>
+                <BOOL/>
+              </type>
+            </variable>
+            <variable name="GTRealResult">
+              <type>
+                <BOOL/>
+              </type>
+            </variable>
+            <variable name="GEIntResult">
+              <type>
+                <BOOL/>
+              </type>
+            </variable>
+            <variable name="GERealResult">
+              <type>
+                <BOOL/>
+              </type>
+            </variable>
+            <variable name="LIMITIntResult">
+              <type>
+                <INT/>
+              </type>
+            </variable>
+            <variable name="LIMITRealResult">
+              <type>
+                <REAL/>
+              </type>
+            </variable>
+            <variable name="MAXIntResult">
+              <type>
+                <INT/>
+              </type>
+            </variable>
+            <variable name="MAXRealResult">
+              <type>
+                <REAL/>
+              </type>
+            </variable>
+            <variable name="MINIntResult">
+              <type>
+                <INT/>
+              </type>
+            </variable>
+            <variable name="MINRealResult">
+              <type>
+                <REAL/>
+              </type>
+            </variable>
+            <variable name="SELIntResult">
+              <type>
+                <INT/>
+              </type>
+            </variable>
+            <variable name="SELRealResult">
+              <type>
+                <REAL/>
+              </type>
+            </variable>
+            <variable name="ExpectedBool">
+              <type>
+                <BOOL/>
+              </type>
+            </variable>
+            <variable name="ExpectedInt">
+              <type>
+                <INT/>
+              </type>
+            </variable>
+            <variable name="ExpectedReal">
+              <type>
+                <REAL/>
+              </type>
+            </variable>
+            <variable name="EQIntOK">
+              <type>
+                <BOOL/>
+              </type>
+            </variable>
+            <variable name="EQRealOK">
+              <type>
+                <BOOL/>
+              </type>
+            </variable>
+            <variable name="NEIntOK">
+              <type>
+                <BOOL/>
+              </type>
+            </variable>
+            <variable name="NERealOK">
+              <type>
+                <BOOL/>
+              </type>
+            </variable>
+            <variable name="LTIntOK">
+              <type>
+                <BOOL/>
+              </type>
+            </variable>
+            <variable name="LTRealOK">
+              <type>
+                <BOOL/>
+              </type>
+            </variable>
+            <variable name="LEIntOK">
+              <type>
+                <BOOL/>
+              </type>
+            </variable>
+            <variable name="LERealOK">
+              <type>
+                <BOOL/>
+              </type>
+            </variable>
+            <variable name="GTIntOK">
+              <type>
+                <BOOL/>
+              </type>
+            </variable>
+            <variable name="GTRealOK">
+              <type>
+                <BOOL/>
+              </type>
+            </variable>
+            <variable name="GEIntOK">
+              <type>
+                <BOOL/>
+              </type>
+            </variable>
+            <variable name="GERealOK">
+              <type>
+                <BOOL/>
+              </type>
+            </variable>
+            <variable name="LIMITIntOK">
+              <type>
+                <BOOL/>
+              </type>
+            </variable>
+            <variable name="LIMITRealOK">
+              <type>
+                <BOOL/>
+              </type>
+            </variable>
+            <variable name="MAXIntOK">
+              <type>
+                <BOOL/>
+              </type>
+            </variable>
+            <variable name="MAXRealOK">
+              <type>
+                <BOOL/>
+              </type>
+            </variable>
+            <variable name="MINIntOK">
+              <type>
+                <BOOL/>
+              </type>
+            </variable>
+            <variable name="MINRealOK">
+              <type>
+                <BOOL/>
+              </type>
+            </variable>
+            <variable name="SELIntOK">
+              <type>
+                <BOOL/>
+              </type>
+            </variable>
+            <variable name="SELRealOK">
+              <type>
+                <BOOL/>
+              </type>
+            </variable>
+            <variable name="TestStep">
+              <type>
+                <INT/>
+              </type>
+            </variable>
+            <variable name="TestsPassed">
+              <type>
+                <BOOL/>
+              </type>
+            </variable>
+            <variable name="Errors">
+              <type>
+                <INT/>
+              </type>
+            </variable>
+          </localVars>
+        </interface>
+        <body>
+          <ST>
+            <xhtml:p><![CDATA[  Enable := TRUE;
+  
+  (* 初始化测试数据 *)
+  IntA := 10;
+  IntB := 5;
+  IntC := 15;
+  IntMin := 3;
+  IntMax := 12;
+  
+  RealA := 10.5;
+  RealB := 5.2;
+  RealC := 15.8;
+  RealMin := 3.1;
+  RealMax := 12.9;
+  
+  Selector := TRUE;
+
+  IF Enable THEN
+      
+      (* EQ测试 - 等于比较 *)
+      TestStep := 1;
+      EQIntResult := EQ(IntA, IntA);  (* 10 = 10 *)
+      EQRealResult := EQ(RealA, RealA);  (* 10.5 = 10.5 *)
+      ExpectedBool := TRUE;
+      EQIntOK := (EQIntResult = ExpectedBool);
+      EQRealOK := (EQRealResult = ExpectedBool);
+      
+      (* NE测试 - 不等于比较 *)
+      TestStep := 2;
+      NEIntResult := NE(IntA, IntB);  (* 10 <> 5 *)
+      NERealResult := NE(RealA, RealB);  (* 10.5 <> 5.2 *)
+      ExpectedBool := TRUE;
+      NEIntOK := (NEIntResult = ExpectedBool);
+      NERealOK := (NERealResult = ExpectedBool);
+      
+      (* LT测试 - 小于比较 *)
+      TestStep := 3;
+      LTIntResult := LT(IntB, IntA);  (* 5 < 10 *)
+      LTRealResult := LT(RealB, RealA);  (* 5.2 < 10.5 *)
+      ExpectedBool := TRUE;
+      LTIntOK := (LTIntResult = ExpectedBool);
+      LTRealOK := (LTRealResult = ExpectedBool);
+      
+      (* LE测试 - 小于等于比较 *)
+      TestStep := 4;
+      LEIntResult := LE(IntA, IntA);  (* 10 <= 10 *)
+      LERealResult := LE(RealB, RealA);  (* 5.2 <= 10.5 *)
+      ExpectedBool := TRUE;
+      LEIntOK := (LEIntResult = ExpectedBool);
+      LERealOK := (LERealResult = ExpectedBool);
+      
+      (* GT测试 - 大于比较 *)
+      TestStep := 5;
+      GTIntResult := GT(IntA, IntB);  (* 10 > 5 *)
+      GTRealResult := GT(RealA, RealB);  (* 10.5 > 5.2 *)
+      ExpectedBool := TRUE;
+      GTIntOK := (GTIntResult = ExpectedBool);
+      GTRealOK := (GTRealResult = ExpectedBool);
+      
+      (* GE测试 - 大于等于比较 *)
+      TestStep := 6;
+      GEIntResult := GE(IntA, IntA);  (* 10 >= 10 *)
+      GERealResult := GE(RealA, RealB);  (* 10.5 >= 5.2 *)
+      ExpectedBool := TRUE;
+      GEIntOK := (GEIntResult = ExpectedBool);
+      GERealOK := (GERealResult = ExpectedBool);
+      
+      (* LIMIT测试 - 限制在范围内 *)
+      TestStep := 7;
+      LIMITIntResult := LIMIT(IntMin, IntC, IntMax);  (* LIMIT(3, 15, 12) = 12 *)
+      LIMITRealResult := LIMIT(RealMin, RealC, RealMax);  (* LIMIT(3.1, 15.8, 12.9) = 12.9 *)
+      ExpectedInt := 12;
+      ExpectedReal := 12.9;
+      LIMITIntOK := (LIMITIntResult = ExpectedInt);
+      LIMITRealOK := (LIMITRealResult = ExpectedReal);
+      
+      (* MAX测试 - 取最大值 *)
+      TestStep := 8;
+      MAXIntResult := MAX(IntA, IntB);  (* MAX(10, 5) = 10 *)
+      MAXRealResult := MAX(RealA, RealB);  (* MAX(10.5, 5.2) = 10.5 *)
+      ExpectedInt := 10;
+      ExpectedReal := 10.5;
+      MAXIntOK := (MAXIntResult = ExpectedInt);
+      MAXRealOK := (MAXRealResult = ExpectedReal);
+      
+      (* MIN测试 - 取最小值 *)
+      TestStep := 9;
+      MINIntResult := MIN(IntA, IntB);  (* MIN(10, 5) = 5 *)
+      MINRealResult := MIN(RealA, RealB);  (* MIN(10.5, 5.2) = 5.2 *)
+      ExpectedInt := 5;
+      ExpectedReal := 5.2;
+      MINIntOK := (MINIntResult = ExpectedInt);
+      MINRealOK := (MINRealResult = ExpectedReal);
+      
+      (* SEL测试 - 选择 *)
+      TestStep := 10;
+      SELIntResult := SEL(Selector, IntB, IntA);  (* SEL(TRUE, 5, 10) = 10 *)
+      SELRealResult := SEL(Selector, RealB, RealA);  (* SEL(TRUE, 5.2, 10.5) = 10.5 *)
+      ExpectedInt := 10;
+      ExpectedReal := 10.5;
+      SELIntOK := (SELIntResult = ExpectedInt);
+      SELRealOK := (SELRealResult = ExpectedReal);
+      
+      (* 统计结果 *)
+      Errors := 0;
+      IF NOT EQIntOK THEN Errors := Errors + 1; END_IF;
+      IF NOT EQRealOK THEN Errors := Errors + 1; END_IF;
+      IF NOT NEIntOK THEN Errors := Errors + 1; END_IF;
+      IF NOT NERealOK THEN Errors := Errors + 1; END_IF;
+      IF NOT LTIntOK THEN Errors := Errors + 1; END_IF;
+      IF NOT LTRealOK THEN Errors := Errors + 1; END_IF;
+      IF NOT LEIntOK THEN Errors := Errors + 1; END_IF;
+      IF NOT LERealOK THEN Errors := Errors + 1; END_IF;
+      IF NOT GTIntOK THEN Errors := Errors + 1; END_IF;
+      IF NOT GTRealOK THEN Errors := Errors + 1; END_IF;
+      IF NOT GEIntOK THEN Errors := Errors + 1; END_IF;
+      IF NOT GERealOK THEN Errors := Errors + 1; END_IF;
+      IF NOT LIMITIntOK THEN Errors := Errors + 1; END_IF;
+      IF NOT LIMITRealOK THEN Errors := Errors + 1; END_IF;
+      IF NOT MAXIntOK THEN Errors := Errors + 1; END_IF;
+      IF NOT MAXRealOK THEN Errors := Errors + 1; END_IF;
+      IF NOT MINIntOK THEN Errors := Errors + 1; END_IF;
+      IF NOT MINRealOK THEN Errors := Errors + 1; END_IF;
+      IF NOT SELIntOK THEN Errors := Errors + 1; END_IF;
+      IF NOT SELRealOK THEN Errors := Errors + 1; END_IF;
+      
+      TestsPassed := (Errors = 0);
+      Complete := TRUE;
+      
+      IF TestsPassed THEN
+          TestStep := 99;  (* 所有测试通过 *)
+      ELSE
+          TestStep := 88;  (* 有测试失败 *)
+      END_IF;
+
+  ELSE
+      TestStep := 0;
+      Complete := FALSE;
+      TestsPassed := FALSE;
+      Errors := 0;
+  END_IF;
+
+]]></xhtml:p>
+          </ST>
+        </body>
+      </pou>
+    </pous>
+  </types>
+  <instances>
+    <configurations>
+      <configuration name="config">
+        <resource name="resource1">
+          <task name="task0" priority="0" interval="T#20ms">
+            <pouInstance name="instance0" typeName="ComparisonInstructionsTest"/>
+          </task>
+        </resource>
+      </configuration>
+    </configurations>
+  </instances>
+</project>

@@ -1,0 +1,361 @@
+<?xml version='1.0' encoding='utf-8'?>
+<project xmlns="http://www.plcopen.org/xml/tc6_0201" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xhtml="http://www.w3.org/1999/xhtml" xmlns:ns1="http://www.plcopen.org/xml/tc6_0201">
+  <fileHeader companyName="未知" productName="位操作指令测试" productVersion="1" creationDateTime="2025-08-30T14:00:00"/>
+  <contentHeader name="Device (Win32)" modificationDateTime="2025-08-30T14:00:00">
+    <coordinateInfo>
+      <fbd>
+        <scaling x="8" y="8"/>
+      </fbd>
+      <ld>
+        <scaling x="8" y="8"/>
+      </ld>
+      <sfc>
+        <scaling x="8" y="8"/>
+      </sfc>
+    </coordinateInfo>
+  </contentHeader>
+  <types>
+    <dataTypes/>
+    <pous>
+      <pou name="BitwiseOperationsTest" pouType="program">
+        <interface>
+          <localVars>
+            <variable name="Enable">
+              <type>
+                <BOOL/>
+              </type>
+            </variable>
+            <variable name="Complete">
+              <type>
+                <BOOL/>
+              </type>
+            </variable>
+            <variable name="TestByte1">
+              <type>
+                <BYTE/>
+              </type>
+            </variable>
+            <variable name="TestByte2">
+              <type>
+                <BYTE/>
+              </type>
+            </variable>
+            <variable name="TestWord1">
+              <type>
+                <WORD/>
+              </type>
+            </variable>
+            <variable name="TestWord2">
+              <type>
+                <WORD/>
+              </type>
+            </variable>
+            <variable name="TestDWord1">
+              <type>
+                <DWORD/>
+              </type>
+            </variable>
+            <variable name="TestDWord2">
+              <type>
+                <DWORD/>
+              </type>
+            </variable>
+            <variable name="ANDByteResult">
+              <type>
+                <BYTE/>
+              </type>
+            </variable>
+            <variable name="ANDWordResult">
+              <type>
+                <WORD/>
+              </type>
+            </variable>
+            <variable name="ANDDWordResult">
+              <type>
+                <DWORD/>
+              </type>
+            </variable>
+            <variable name="ORByteResult">
+              <type>
+                <BYTE/>
+              </type>
+            </variable>
+            <variable name="ORWordResult">
+              <type>
+                <WORD/>
+              </type>
+            </variable>
+            <variable name="ORDWordResult">
+              <type>
+                <DWORD/>
+              </type>
+            </variable>
+            <variable name="XORByteResult">
+              <type>
+                <BYTE/>
+              </type>
+            </variable>
+            <variable name="XORWordResult">
+              <type>
+                <WORD/>
+              </type>
+            </variable>
+            <variable name="XORDWordResult">
+              <type>
+                <DWORD/>
+              </type>
+            </variable>
+            <variable name="NOTByteResult">
+              <type>
+                <BYTE/>
+              </type>
+            </variable>
+            <variable name="NOTWordResult">
+              <type>
+                <WORD/>
+              </type>
+            </variable>
+            <variable name="NOTDWordResult">
+              <type>
+                <DWORD/>
+              </type>
+            </variable>
+            <variable name="ExpectedByte">
+              <type>
+                <BYTE/>
+              </type>
+            </variable>
+            <variable name="ExpectedWord">
+              <type>
+                <WORD/>
+              </type>
+            </variable>
+            <variable name="ExpectedDWord">
+              <type>
+                <DWORD/>
+              </type>
+            </variable>
+            <variable name="ANDByteOK">
+              <type>
+                <BOOL/>
+              </type>
+            </variable>
+            <variable name="ANDWordOK">
+              <type>
+                <BOOL/>
+              </type>
+            </variable>
+            <variable name="ANDDWordOK">
+              <type>
+                <BOOL/>
+              </type>
+            </variable>
+            <variable name="ORByteOK">
+              <type>
+                <BOOL/>
+              </type>
+            </variable>
+            <variable name="ORWordOK">
+              <type>
+                <BOOL/>
+              </type>
+            </variable>
+            <variable name="ORDWordOK">
+              <type>
+                <BOOL/>
+              </type>
+            </variable>
+            <variable name="XORByteOK">
+              <type>
+                <BOOL/>
+              </type>
+            </variable>
+            <variable name="XORWordOK">
+              <type>
+                <BOOL/>
+              </type>
+            </variable>
+            <variable name="XORDWordOK">
+              <type>
+                <BOOL/>
+              </type>
+            </variable>
+            <variable name="NOTByteOK">
+              <type>
+                <BOOL/>
+              </type>
+            </variable>
+            <variable name="NOTWordOK">
+              <type>
+                <BOOL/>
+              </type>
+            </variable>
+            <variable name="NOTDWordOK">
+              <type>
+                <BOOL/>
+              </type>
+            </variable>
+            <variable name="TestStep">
+              <type>
+                <INT/>
+              </type>
+            </variable>
+            <variable name="TestsPassed">
+              <type>
+                <BOOL/>
+              </type>
+            </variable>
+            <variable name="Errors">
+              <type>
+                <INT/>
+              </type>
+            </variable>
+          </localVars>
+        </interface>
+        <body>
+          <ST>
+            <xhtml:p><![CDATA[  Enable := TRUE;
+  
+  (* 初始化测试数据 *)
+  TestByte1 := 16#F0;     (* 11110000 *)
+  TestByte2 := 16#AA;     (* 10101010 *)
+  TestWord1 := 16#FF00;   (* 1111111100000000 *)
+  TestWord2 := 16#AAAA;   (* 1010101010101010 *)
+  TestDWord1 := 16#FFFF0000; (* 11111111111111110000000000000000 *)
+  TestDWord2 := 16#AAAAAAAA; (* 10101010101010101010101010101010 *)
+
+  IF Enable THEN
+      
+      (* AND BYTE测试 - 按位与 *)
+      TestStep := 1;
+      ANDByteResult := AND(TestByte1, TestByte2);
+      (* F0 AND AA = 11110000 AND 10101010 = 10100000 = A0 *)
+      ExpectedByte := 16#A0;
+      ANDByteOK := (ANDByteResult = ExpectedByte);
+      
+      (* AND WORD测试 - 按位与 *)
+      TestStep := 2;
+      ANDWordResult := AND(TestWord1, TestWord2);
+      (* FF00 AND AAAA = 1111111100000000 AND 1010101010101010 = 1010101000000000 = AA00 *)
+      ExpectedWord := 16#AA00;
+      ANDWordOK := (ANDWordResult = ExpectedWord);
+      
+      (* AND DWORD测试 - 按位与 *)
+      TestStep := 3;
+      ANDDWordResult := AND(TestDWord1, TestDWord2);
+      (* FFFF0000 AND AAAAAAAA = AAAA0000 *)
+      ExpectedDWord := 16#AAAA0000;
+      ANDDWordOK := (ANDDWordResult = ExpectedDWord);
+      
+      (* OR BYTE测试 - 按位或 *)
+      TestStep := 4;
+      ORByteResult := OR(TestByte1, TestByte2);
+      (* F0 OR AA = 11110000 OR 10101010 = 11111010 = FA *)
+      ExpectedByte := 16#FA;
+      ORByteOK := (ORByteResult = ExpectedByte);
+      
+      (* OR WORD测试 - 按位或 *)
+      TestStep := 5;
+      ORWordResult := OR(TestWord1, TestWord2);
+      (* FF00 OR AAAA = 1111111100000000 OR 1010101010101010 = 1111111110101010 = FFAA *)
+      ExpectedWord := 16#FFAA;
+      ORWordOK := (ORWordResult = ExpectedWord);
+      
+      (* OR DWORD测试 - 按位或 *)
+      TestStep := 6;
+      ORDWordResult := OR(TestDWord1, TestDWord2);
+      (* FFFF0000 OR AAAAAAAA = FFFFAAAA *)
+      ExpectedDWord := 16#FFFFAAAA;
+      ORDWordOK := (ORDWordResult = ExpectedDWord);
+      
+      (* XOR BYTE测试 - 按位异或 *)
+      TestStep := 7;
+      XORByteResult := XOR(TestByte1, TestByte2);
+      (* F0 XOR AA = 11110000 XOR 10101010 = 01011010 = 5A *)
+      ExpectedByte := 16#5A;
+      XORByteOK := (XORByteResult = ExpectedByte);
+      
+      (* XOR WORD测试 - 按位异或 *)
+      TestStep := 8;
+      XORWordResult := XOR(TestWord1, TestWord2);
+      (* FF00 XOR AAAA = 1111111100000000 XOR 1010101010101010 = 0101010110101010 = 55AA *)
+      ExpectedWord := 16#55AA;
+      XORWordOK := (XORWordResult = ExpectedWord);
+      
+      (* XOR DWORD测试 - 按位异或 *)
+      TestStep := 9;
+      XORDWordResult := XOR(TestDWord1, TestDWord2);
+      (* FFFF0000 XOR AAAAAAAA = 5555AAAA *)
+      ExpectedDWord := 16#5555AAAA;
+      XORDWordOK := (XORDWordResult = ExpectedDWord);
+      
+      (* NOT BYTE测试 - 按位非 *)
+      TestStep := 10;
+      NOTByteResult := NOT(TestByte1);
+      (* NOT F0 = NOT 11110000 = 00001111 = 0F *)
+      ExpectedByte := 16#0F;
+      NOTByteOK := (NOTByteResult = ExpectedByte);
+      
+      (* NOT WORD测试 - 按位非 *)
+      TestStep := 11;
+      NOTWordResult := NOT(TestWord1);
+      (* NOT FF00 = NOT 1111111100000000 = 0000000011111111 = 00FF *)
+      ExpectedWord := 16#00FF;
+      NOTWordOK := (NOTWordResult = ExpectedWord);
+      
+      (* NOT DWORD测试 - 按位非 *)
+      TestStep := 12;
+      NOTDWordResult := NOT(TestDWord1);
+      (* NOT FFFF0000 = 0000FFFF *)
+      ExpectedDWord := 16#0000FFFF;
+      NOTDWordOK := (NOTDWordResult = ExpectedDWord);
+      
+      (* 统计结果 *)
+      Errors := 0;
+      IF NOT ANDByteOK THEN Errors := Errors + 1; END_IF;
+      IF NOT ANDWordOK THEN Errors := Errors + 1; END_IF;
+      IF NOT ANDDWordOK THEN Errors := Errors + 1; END_IF;
+      IF NOT ORByteOK THEN Errors := Errors + 1; END_IF;
+      IF NOT ORWordOK THEN Errors := Errors + 1; END_IF;
+      IF NOT ORDWordOK THEN Errors := Errors + 1; END_IF;
+      IF NOT XORByteOK THEN Errors := Errors + 1; END_IF;
+      IF NOT XORWordOK THEN Errors := Errors + 1; END_IF;
+      IF NOT XORDWordOK THEN Errors := Errors + 1; END_IF;
+      IF NOT NOTByteOK THEN Errors := Errors + 1; END_IF;
+      IF NOT NOTWordOK THEN Errors := Errors + 1; END_IF;
+      IF NOT NOTDWordOK THEN Errors := Errors + 1; END_IF;
+      
+      TestsPassed := (Errors = 0);
+      Complete := TRUE;
+      
+      IF TestsPassed THEN
+          TestStep := 99;  (* 所有测试通过 *)
+      ELSE
+          TestStep := 88;  (* 有测试失败 *)
+      END_IF;
+
+  ELSE
+      TestStep := 0;
+      Complete := FALSE;
+      TestsPassed := FALSE;
+      Errors := 0;
+  END_IF;
+
+]]></xhtml:p>
+          </ST>
+        </body>
+      </pou>
+    </pous>
+  </types>
+  <instances>
+    <configurations>
+      <configuration name="config">
+        <resource name="resource1">
+          <task name="task0" priority="0" interval="T#20ms">
+            <pouInstance name="instance0" typeName="BitwiseOperationsTest"/>
+          </task>
+        </resource>
+      </configuration>
+    </configurations>
+  </instances>
+</project>

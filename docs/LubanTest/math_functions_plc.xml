@@ -1,0 +1,366 @@
+<?xml version='1.0' encoding='utf-8'?>
+<project xmlns="http://www.plcopen.org/xml/tc6_0201" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xhtml="http://www.w3.org/1999/xhtml" xmlns:ns1="http://www.plcopen.org/xml/tc6_0201">
+  <fileHeader companyName="汪勇强测试项目" productName="数学函数指令测试" productVersion="1" creationDateTime="2025-08-30T16:00:00"/>
+  <contentHeader name="Device (Win32)" modificationDateTime="2025-08-30T16:00:00">
+    <coordinateInfo>
+      <fbd>
+        <scaling x="8" y="8"/>
+      </fbd>
+      <ld>
+        <scaling x="8" y="8"/>
+      </ld>
+      <sfc>
+        <scaling x="8" y="8"/>
+      </sfc>
+    </coordinateInfo>
+  </contentHeader>
+  <types>
+    <dataTypes/>
+    <pous>
+      <pou name="MathFunctionsTest" pouType="program">
+        <interface>
+          <localVars>
+            <variable name="Enable">
+              <type>
+                <BOOL/>
+              </type>
+            </variable>
+            <variable name="Complete">
+              <type>
+                <BOOL/>
+              </type>
+            </variable>
+            <variable name="TestValue1">
+              <type>
+                <REAL/>
+              </type>
+              <documentation>
+                <xhtml:p><![CDATA[UC:[测试输入数据]]]></xhtml:p>
+              </documentation>
+            </variable>
+            <variable name="TestValue2">
+              <type>
+                <REAL/>
+              </type>
+            </variable>
+            <variable name="TestValue3">
+              <type>
+                <REAL/>
+              </type>
+            </variable>
+            <variable name="TestValue4">
+              <type>
+                <REAL/>
+              </type>
+            </variable>
+            <variable name="TestAngle">
+              <type>
+                <REAL/>
+              </type>
+            </variable>
+            <variable name="ABSResult">
+              <type>
+                <REAL/>
+              </type>
+              <documentation>
+                <xhtml:p><![CDATA[UC:[ABS测试结果]]]></xhtml:p>
+              </documentation>
+            </variable>
+            <variable name="ACOSResult">
+              <type>
+                <REAL/>
+              </type>
+              <documentation>
+                <xhtml:p><![CDATA[UC:[三角函数测试结果]]]></xhtml:p>
+              </documentation>
+            </variable>
+            <variable name="ASINResult">
+              <type>
+                <REAL/>
+              </type>
+            </variable>
+            <variable name="ATANResult">
+              <type>
+                <REAL/>
+              </type>
+            </variable>
+            <variable name="COSResult">
+              <type>
+                <REAL/>
+              </type>
+            </variable>
+            <variable name="SINResult">
+              <type>
+                <REAL/>
+              </type>
+            </variable>
+            <variable name="TANResult">
+              <type>
+                <REAL/>
+              </type>
+            </variable>
+            <variable name="EXPResult">
+              <type>
+                <REAL/>
+              </type>
+              <documentation>
+                <xhtml:p><![CDATA[UC:[指数对数函数测试结果]]]></xhtml:p>
+              </documentation>
+            </variable>
+            <variable name="LNResult">
+              <type>
+                <REAL/>
+              </type>
+            </variable>
+            <variable name="LOGResult">
+              <type>
+                <REAL/>
+              </type>
+            </variable>
+            <variable name="SQRTResult">
+              <type>
+                <REAL/>
+              </type>
+              <documentation>
+                <xhtml:p><![CDATA[UC:[平方根测试结果]]]></xhtml:p>
+              </documentation>
+            </variable>
+            <variable name="ExpectedReal">
+              <type>
+                <REAL/>
+              </type>
+              <documentation>
+                <xhtml:p><![CDATA[UC:[期望结果变量]]]></xhtml:p>
+              </documentation>
+            </variable>
+            <variable name="ABSOK">
+              <type>
+                <BOOL/>
+              </type>
+              <documentation>
+                <xhtml:p><![CDATA[UC:[测试结果判断变量]]]></xhtml:p>
+              </documentation>
+            </variable>
+            <variable name="ACOSOK">
+              <type>
+                <BOOL/>
+              </type>
+            </variable>
+            <variable name="ASINOK">
+              <type>
+                <BOOL/>
+              </type>
+            </variable>
+            <variable name="ATANOG">
+              <type>
+                <BOOL/>
+              </type>
+            </variable>
+            <variable name="COSOK">
+              <type>
+                <BOOL/>
+              </type>
+            </variable>
+            <variable name="SINOK">
+              <type>
+                <BOOL/>
+              </type>
+            </variable>
+            <variable name="TANOG">
+              <type>
+                <BOOL/>
+              </type>
+            </variable>
+            <variable name="EXPOK">
+              <type>
+                <BOOL/>
+              </type>
+            </variable>
+            <variable name="LNOK">
+              <type>
+                <BOOL/>
+              </type>
+            </variable>
+            <variable name="LOGOK">
+              <type>
+                <BOOL/>
+              </type>
+            </variable>
+            <variable name="SQRTOK">
+              <type>
+                <BOOL/>
+              </type>
+            </variable>
+            <variable name="TestStep">
+              <type>
+                <INT/>
+              </type>
+              <documentation>
+                <xhtml:p><![CDATA[UC:[控制变量]]]></xhtml:p>
+              </documentation>
+            </variable>
+            <variable name="TestsPassed">
+              <type>
+                <BOOL/>
+              </type>
+            </variable>
+            <variable name="Errors">
+              <type>
+                <INT/>
+              </type>
+            </variable>
+            <variable name="Tolerance">
+              <type>
+                <REAL/>
+              </type>
+              <documentation>
+                <xhtml:p><![CDATA[UC:[比较误差容差]]]></xhtml:p>
+              </documentation>
+            </variable>
+            <variable name="ResultDiff">
+              <type>
+                <REAL/>
+              </type>
+            </variable>
+          </localVars>
+        </interface>
+        <body>
+          <ST>
+            <xhtml:p><![CDATA[  Enable := TRUE;
+  
+  (* 初始化测试数据 *)
+  TestValue1 := -5.5;     (* 负数，用于ABS测试 *)
+  TestValue2 := 0.5;      (* 0-1之间，用于ACOS/ASIN测试 *)
+  TestValue3 := 2.0;      (* 正数，用于指数对数测试 *)
+  TestValue4 := 25.0;     (* 完全平方数，用于SQRT测试 *)
+  TestAngle := 0.7854;    (* π/4 ≈ 45度，用于三角函数测试 *)
+  
+  Tolerance := 0.01;      (* 浮点数比较容差 *)
+
+  IF Enable THEN
+      
+      (* ABS测试 - 绝对值 *)
+      TestStep := 1;
+      ABSResult := ABS(TestValue1);
+      ExpectedReal := 5.5;    (* ABS(-5.5) = 5.5 *)
+      ResultDiff := ABSResult - ExpectedReal;
+      ABSOK := (ResultDiff < Tolerance) AND (ResultDiff > -Tolerance);
+      
+      (* ACOS测试 - 反余弦 *)
+      TestStep := 2;
+      ACOSResult := ACOS(TestValue2);
+      ExpectedReal := 1.047;  (* ACOS(0.5) ≈ 1.047弧度 (60度) *)
+      ResultDiff := ACOSResult - ExpectedReal;
+      ACOSOK := (ResultDiff < Tolerance) AND (ResultDiff > -Tolerance);
+      
+      (* ASIN测试 - 反正弦 *)
+      TestStep := 3;
+      ASINResult := ASIN(TestValue2);
+      ExpectedReal := 0.524;  (* ASIN(0.5) ≈ 0.524弧度 (30度) *)
+      ResultDiff := ASINResult - ExpectedReal;
+      ASINOK := (ResultDiff < Tolerance) AND (ResultDiff > -Tolerance);
+      
+      (* ATAN测试 - 反正切 *)
+      TestStep := 4;
+      ATANResult := ATAN(1.0);
+      ExpectedReal := 0.7854; (* ATAN(1.0) ≈ 0.7854弧度 (45度) *)
+      ResultDiff := ATANResult - ExpectedReal;
+      ATANOG := (ResultDiff < Tolerance) AND (ResultDiff > -Tolerance);
+      
+      (* COS测试 - 余弦 *)
+      TestStep := 5;
+      COSResult := COS(TestAngle);
+      ExpectedReal := 0.707;  (* COS(π/4) ≈ 0.707 *)
+      ResultDiff := COSResult - ExpectedReal;
+      COSOK := (ResultDiff < Tolerance) AND (ResultDiff > -Tolerance);
+      
+      (* SIN测试 - 正弦 *)
+      TestStep := 6;
+      SINResult := SIN(TestAngle);
+      ExpectedReal := 0.707;  (* SIN(π/4) ≈ 0.707 *)
+      ResultDiff := SINResult - ExpectedReal;
+      SINOK := (ResultDiff < Tolerance) AND (ResultDiff > -Tolerance);
+      
+      (* TAN测试 - 正切 *)
+      TestStep := 7;
+      TANResult := TAN(TestAngle);
+      ExpectedReal := 1.0;    (* TAN(π/4) = 1.0 *)
+      ResultDiff := TANResult - ExpectedReal;
+      TANOG := (ResultDiff < Tolerance) AND (ResultDiff > -Tolerance);
+      
+      (* EXP测试 - 自然指数 *)
+      TestStep := 8;
+      EXPResult := EXP(TestValue3);
+      ExpectedReal := 7.389;  (* EXP(2.0) ≈ 7.389 *)
+      ResultDiff := EXPResult - ExpectedReal;
+      EXPOK := (ResultDiff < Tolerance) AND (ResultDiff > -Tolerance);
+      
+      (* LN测试 - 自然对数 *)
+      TestStep := 9;
+      LNResult := LN(TestValue3);
+      ExpectedReal := 0.693;  (* LN(2.0) ≈ 0.693 *)
+      ResultDiff := LNResult - ExpectedReal;
+      LNOK := (ResultDiff < Tolerance) AND (ResultDiff > -Tolerance);
+      
+      (* LOG测试 - 常用对数(以10为底) *)
+      TestStep := 10;
+      LOGResult := LOG(100.0);
+      ExpectedReal := 2.0;    (* LOG(100) = 2.0 *)
+      ResultDiff := LOGResult - ExpectedReal;
+      LOGOK := (ResultDiff < Tolerance) AND (ResultDiff > -Tolerance);
+      
+      (* SQRT测试 - 平方根 *)
+      TestStep := 11;
+      SQRTResult := SQRT(TestValue4);
+      ExpectedReal := 5.0;    (* SQRT(25.0) = 5.0 *)
+      ResultDiff := SQRTResult - ExpectedReal;
+      SQRTOK := (ResultDiff < Tolerance) AND (ResultDiff > -Tolerance);
+      
+      (* 统计结果 *)
+      Errors := 0;
+      IF NOT ABSOK THEN Errors := Errors + 1; END_IF;
+      IF NOT ACOSOK THEN Errors := Errors + 1; END_IF;
+      IF NOT ASINOK THEN Errors := Errors + 1; END_IF;
+      IF NOT ATANOG THEN Errors := Errors + 1; END_IF;
+      IF NOT COSOK THEN Errors := Errors + 1; END_IF;
+      IF NOT SINOK THEN Errors := Errors + 1; END_IF;
+      IF NOT TANOG THEN Errors := Errors + 1; END_IF;
+      IF NOT EXPOK THEN Errors := Errors + 1; END_IF;
+      IF NOT LNOK THEN Errors := Errors + 1; END_IF;
+      IF NOT LOGOK THEN Errors := Errors + 1; END_IF;
+      IF NOT SQRTOK THEN Errors := Errors + 1; END_IF;
+      
+      TestsPassed := (Errors = 0);
+      Complete := TRUE;
+      
+      IF TestsPassed THEN
+          TestStep := 99;  (* 所有测试通过 *)
+      ELSE
+          TestStep := 88;  (* 有测试失败 *)
+      END_IF;
+
+  ELSE
+      TestStep := 0;
+      Complete := FALSE;
+      TestsPassed := FALSE;
+      Errors := 0;
+  END_IF;
+
+]]></xhtml:p>
+          </ST>
+        </body>
+      </pou>
+    </pous>
+  </types>
+  <instances>
+    <configurations>
+      <configuration name="config">
+        <resource name="resource1">
+          <task name="task0" priority="0" interval="T#20ms">
+            <pouInstance name="instance0" typeName="MathFunctionsTest"/>
+          </task>
+        </resource>
+      </configuration>
+    </configurations>
+  </instances>
+</project>

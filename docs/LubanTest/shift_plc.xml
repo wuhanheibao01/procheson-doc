@@ -1,0 +1,349 @@
+<?xml version='1.0' encoding='utf-8'?>
+<project xmlns="http://www.plcopen.org/xml/tc6_0201" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xhtml="http://www.w3.org/1999/xhtml" xmlns:ns1="http://www.plcopen.org/xml/tc6_0201">
+  <fileHeader companyName="未知" productName="位移指令测试" productVersion="1" creationDateTime="2025-08-30T13:00:00"/>
+  <contentHeader name="Device (Win32)" modificationDateTime="2025-08-30T13:00:00">
+    <coordinateInfo>
+      <fbd>
+        <scaling x="8" y="8"/>
+      </fbd>
+      <ld>
+        <scaling x="8" y="8"/>
+      </ld>
+      <sfc>
+        <scaling x="8" y="8"/>
+      </sfc>
+    </coordinateInfo>
+  </contentHeader>
+  <types>
+    <dataTypes/>
+    <pous>
+      <pou name="ShiftInstructionsTest" pouType="program">
+        <interface>
+          <localVars>
+            <variable name="Enable">
+              <type>
+                <BOOL/>
+              </type>
+            </variable>
+            <variable name="Complete">
+              <type>
+                <BOOL/>
+              </type>
+            </variable>
+            <variable name="TestByte">
+              <type>
+                <BYTE/>
+              </type>
+            </variable>
+            <variable name="TestWord">
+              <type>
+                <WORD/>
+              </type>
+            </variable>
+            <variable name="TestDWord">
+              <type>
+                <DWORD/>
+              </type>
+            </variable>
+            <variable name="ShiftCount">
+              <type>
+                <INT/>
+              </type>
+            </variable>
+            <variable name="ROLByteResult">
+              <type>
+                <BYTE/>
+              </type>
+            </variable>
+            <variable name="ROLWordResult">
+              <type>
+                <WORD/>
+              </type>
+            </variable>
+            <variable name="ROLDWordResult">
+              <type>
+                <DWORD/>
+              </type>
+            </variable>
+            <variable name="RORByteResult">
+              <type>
+                <BYTE/>
+              </type>
+            </variable>
+            <variable name="RORWordResult">
+              <type>
+                <WORD/>
+              </type>
+            </variable>
+            <variable name="RORDWordResult">
+              <type>
+                <DWORD/>
+              </type>
+            </variable>
+            <variable name="SHLByteResult">
+              <type>
+                <BYTE/>
+              </type>
+            </variable>
+            <variable name="SHLWordResult">
+              <type>
+                <WORD/>
+              </type>
+            </variable>
+            <variable name="SHLDWordResult">
+              <type>
+                <DWORD/>
+              </type>
+            </variable>
+            <variable name="SHRByteResult">
+              <type>
+                <BYTE/>
+              </type>
+            </variable>
+            <variable name="SHRWordResult">
+              <type>
+                <WORD/>
+              </type>
+            </variable>
+            <variable name="SHRDWordResult">
+              <type>
+                <DWORD/>
+              </type>
+            </variable>
+            <variable name="ExpectedByte">
+              <type>
+                <BYTE/>
+              </type>
+            </variable>
+            <variable name="ExpectedWord">
+              <type>
+                <WORD/>
+              </type>
+            </variable>
+            <variable name="ExpectedDWord">
+              <type>
+                <DWORD/>
+              </type>
+            </variable>
+            <variable name="ROLByteOK">
+              <type>
+                <BOOL/>
+              </type>
+            </variable>
+            <variable name="ROLWordOK">
+              <type>
+                <BOOL/>
+              </type>
+            </variable>
+            <variable name="ROLDWordOK">
+              <type>
+                <BOOL/>
+              </type>
+            </variable>
+            <variable name="RORByteOK">
+              <type>
+                <BOOL/>
+              </type>
+            </variable>
+            <variable name="RORWordOK">
+              <type>
+                <BOOL/>
+              </type>
+            </variable>
+            <variable name="RORDWordOK">
+              <type>
+                <BOOL/>
+              </type>
+            </variable>
+            <variable name="SHLByteOK">
+              <type>
+                <BOOL/>
+              </type>
+            </variable>
+            <variable name="SHLWordOK">
+              <type>
+                <BOOL/>
+              </type>
+            </variable>
+            <variable name="SHLDWordOK">
+              <type>
+                <BOOL/>
+              </type>
+            </variable>
+            <variable name="SHRByteOK">
+              <type>
+                <BOOL/>
+              </type>
+            </variable>
+            <variable name="SHRWordOK">
+              <type>
+                <BOOL/>
+              </type>
+            </variable>
+            <variable name="SHRDWordOK">
+              <type>
+                <BOOL/>
+              </type>
+            </variable>
+            <variable name="TestStep">
+              <type>
+                <INT/>
+              </type>
+            </variable>
+            <variable name="TestsPassed">
+              <type>
+                <BOOL/>
+              </type>
+            </variable>
+            <variable name="Errors">
+              <type>
+                <INT/>
+              </type>
+            </variable>
+          </localVars>
+        </interface>
+        <body>
+          <ST>
+            <xhtml:p><![CDATA[  Enable := TRUE;
+  
+  (* 初始化测试数据 *)
+  TestByte := 16#A5;      (* 10100101 *)
+  TestWord := 16#1234;    (* 0001001000110100 *)
+  TestDWord := 16#12345678; (* 00010010001101000101011001111000 *)
+  ShiftCount := 2;        (* 移位数量 *)
+
+  IF Enable THEN
+      
+      (* ROL BYTE测试 - 左循环移位 *)
+      TestStep := 1;
+      ROLByteResult := ROL(TestByte, ShiftCount);
+      (* A5 = 10100101, 左循环移位2位 = 10010110 = 96 *)
+      ExpectedByte := 16#96;
+      ROLByteOK := (ROLByteResult = ExpectedByte);
+      
+      (* ROL WORD测试 - 左循环移位 *)
+      TestStep := 2;
+      ROLWordResult := ROL(TestWord, ShiftCount);
+      (* 1234 = 0001001000110100, 左循环移位2位 = 0100100011010000 = 48D0 *)
+      ExpectedWord := 16#48D0;
+      ROLWordOK := (ROLWordResult = ExpectedWord);
+      
+      (* ROL DWORD测试 - 左循环移位 *)
+      TestStep := 3;
+      ROLDWordResult := ROL(TestDWord, ShiftCount);
+      (* 12345678 左循环移位2位 = 48D159E0 *)
+      ExpectedDWord := 16#48D159E0;
+      ROLDWordOK := (ROLDWordResult = ExpectedDWord);
+      
+      (* ROR BYTE测试 - 右循环移位 *)
+      TestStep := 4;
+      RORByteResult := ROR(TestByte, ShiftCount);
+      (* A5 = 10100101, 右循环移位2位 = 01101001 = 69 *)
+      ExpectedByte := 16#69;
+      RORByteOK := (RORByteResult = ExpectedByte);
+      
+      (* ROR WORD测试 - 右循环移位 *)
+      TestStep := 5;
+      RORWordResult := ROR(TestWord, ShiftCount);
+      (* 1234 = 0001001000110100, 右循环移位2位 = 0000010010001101 = 048D *)
+      ExpectedWord := 16#048D;
+      RORWordOK := (RORWordResult = ExpectedWord);
+      
+      (* ROR DWORD测试 - 右循环移位 *)
+      TestStep := 6;
+      RORDWordResult := ROR(TestDWord, ShiftCount);
+      (* 12345678 右循环移位2位 = 048D159E *)
+      ExpectedDWord := 16#048D159E;
+      RORDWordOK := (RORDWordResult = ExpectedDWord);
+      
+      (* SHL BYTE测试 - 左移位 *)
+      TestStep := 7;
+      SHLByteResult := SHL(TestByte, ShiftCount);
+      (* A5 = 10100101, 左移位2位 = 10010100 = 94 *)
+      ExpectedByte := 16#94;
+      SHLByteOK := (SHLByteResult = ExpectedByte);
+      
+      (* SHL WORD测试 - 左移位 *)
+      TestStep := 8;
+      SHLWordResult := SHL(TestWord, ShiftCount);
+      (* 1234 = 0001001000110100, 左移位2位 = 0100100011010000 = 48D0 *)
+      ExpectedWord := 16#48D0;
+      SHLWordOK := (SHLWordResult = ExpectedWord);
+      
+      (* SHL DWORD测试 - 左移位 *)
+      TestStep := 9;
+      SHLDWordResult := SHL(TestDWord, ShiftCount);
+      (* 12345678 左移位2位 = 48D159E0 *)
+      ExpectedDWord := 16#48D159E0;
+      SHLDWordOK := (SHLDWordResult = ExpectedDWord);
+      
+      (* SHR BYTE测试 - 右移位 *)
+      TestStep := 10;
+      SHRByteResult := SHR(TestByte, ShiftCount);
+      (* A5 = 10100101, 右移位2位 = 00101001 = 29 *)
+      ExpectedByte := 16#29;
+      SHRByteOK := (SHRByteResult = ExpectedByte);
+      
+      (* SHR WORD测试 - 右移位 *)
+      TestStep := 11;
+      SHRWordResult := SHR(TestWord, ShiftCount);
+      (* 1234 = 0001001000110100, 右移位2位 = 0000010010001101 = 048D *)
+      ExpectedWord := 16#048D;
+      SHRWordOK := (SHRWordResult = ExpectedWord);
+      
+      (* SHR DWORD测试 - 右移位 *)
+      TestStep := 12;
+      SHRDWordResult := SHR(TestDWord, ShiftCount);
+      (* 12345678 右移位2位 = 048D159E *)
+      ExpectedDWord := 16#048D159E;
+      SHRDWordOK := (SHRDWordResult = ExpectedDWord);
+      
+      (* 统计结果 *)
+      Errors := 0;
+      IF NOT ROLByteOK THEN Errors := Errors + 1; END_IF;
+      IF NOT ROLWordOK THEN Errors := Errors + 1; END_IF;
+      IF NOT ROLDWordOK THEN Errors := Errors + 1; END_IF;
+      IF NOT RORByteOK THEN Errors := Errors + 1; END_IF;
+      IF NOT RORWordOK THEN Errors := Errors + 1; END_IF;
+      IF NOT RORDWordOK THEN Errors := Errors + 1; END_IF;
+      IF NOT SHLByteOK THEN Errors := Errors + 1; END_IF;
+      IF NOT SHLWordOK THEN Errors := Errors + 1; END_IF;
+      IF NOT SHLDWordOK THEN Errors := Errors + 1; END_IF;
+      IF NOT SHRByteOK THEN Errors := Errors + 1; END_IF;
+      IF NOT SHRWordOK THEN Errors := Errors + 1; END_IF;
+      IF NOT SHRDWordOK THEN Errors := Errors + 1; END_IF;
+      
+      TestsPassed := (Errors = 0);
+      Complete := TRUE;
+      
+      IF TestsPassed THEN
+          TestStep := 99;  (* 所有测试通过 *)
+      ELSE
+          TestStep := 88;  (* 有测试失败 *)
+      END_IF;
+
+  ELSE
+      TestStep := 0;
+      Complete := FALSE;
+      TestsPassed := FALSE;
+      Errors := 0;
+  END_IF;
+
+]]></xhtml:p>
+          </ST>
+        </body>
+      </pou>
+    </pous>
+  </types>
+  <instances>
+    <configurations>
+      <configuration name="config">
+        <resource name="resource1">
+          <task name="task0" priority="0" interval="T#20ms">
+            <pouInstance name="instance0" typeName="ShiftInstructionsTest"/>
+          </task>
+        </resource>
+      </configuration>
+    </configurations>
+  </instances>
+</project>

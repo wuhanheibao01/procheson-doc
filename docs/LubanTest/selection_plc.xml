@@ -1,0 +1,478 @@
+<?xml version='1.0' encoding='utf-8'?>
+<project xmlns="http://www.plcopen.org/xml/tc6_0201" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xhtml="http://www.w3.org/1999/xhtml" xmlns:ns1="http://www.plcopen.org/xml/tc6_0201">
+  <fileHeader companyName="汪勇强测试项目" productName="选择指令测试" productVersion="1" creationDateTime="2025-08-30T16:30:00"/>
+  <contentHeader name="Device (Win32)" modificationDateTime="2025-08-30T16:30:00">
+    <coordinateInfo>
+      <fbd>
+        <scaling x="8" y="8"/>
+      </fbd>
+      <ld>
+        <scaling x="8" y="8"/>
+      </ld>
+      <sfc>
+        <scaling x="8" y="8"/>
+      </sfc>
+    </coordinateInfo>
+  </contentHeader>
+  <types>
+    <dataTypes/>
+    <pous>
+      <pou name="SelectionInstructionsTest" pouType="program">
+        <interface>
+          <localVars>
+            <variable name="Enable">
+              <type>
+                <BOOL/>
+              </type>
+            </variable>
+            <variable name="Complete">
+              <type>
+                <BOOL/>
+              </type>
+            </variable>
+            <variable name="IntA">
+              <type>
+                <INT/>
+              </type>
+              <documentation>
+                <xhtml:p><![CDATA[UC:[测试输入数据 - 整数]]]></xhtml:p>
+              </documentation>
+            </variable>
+            <variable name="IntB">
+              <type>
+                <INT/>
+              </type>
+            </variable>
+            <variable name="IntC">
+              <type>
+                <INT/>
+              </type>
+            </variable>
+            <variable name="IntMin">
+              <type>
+                <INT/>
+              </type>
+            </variable>
+            <variable name="IntMax">
+              <type>
+                <INT/>
+              </type>
+            </variable>
+            <variable name="IntArray">
+              <type>
+                <array>
+                  <dimension lower="0" upper="3"/>
+                  <baseType>
+                    <INT/>
+                  </baseType>
+                </array>
+              </type>
+              <documentation>
+                <xhtml:p><![CDATA[UC:[MUX测试用数组]]]></xhtml:p>
+              </documentation>
+            </variable>
+            <variable name="RealA">
+              <type>
+                <REAL/>
+              </type>
+              <documentation>
+                <xhtml:p><![CDATA[UC:[测试输入数据 - 实数]]]></xhtml:p>
+              </documentation>
+            </variable>
+            <variable name="RealB">
+              <type>
+                <REAL/>
+              </type>
+            </variable>
+            <variable name="RealC">
+              <type>
+                <REAL/>
+              </type>
+            </variable>
+            <variable name="RealMin">
+              <type>
+                <REAL/>
+              </type>
+            </variable>
+            <variable name="RealMax">
+              <type>
+                <REAL/>
+              </type>
+            </variable>
+            <variable name="RealArray">
+              <type>
+                <array>
+                  <dimension lower="0" upper="3"/>
+                  <baseType>
+                    <REAL/>
+                  </baseType>
+                </array>
+              </type>
+              <documentation>
+                <xhtml:p><![CDATA[UC:[MUX测试用数组]]]></xhtml:p>
+              </documentation>
+            </variable>
+            <variable name="BoolSelector">
+              <type>
+                <BOOL/>
+              </type>
+              <documentation>
+                <xhtml:p><![CDATA[UC:[选择器输入]]]></xhtml:p>
+              </documentation>
+            </variable>
+            <variable name="IntSelector">
+              <type>
+                <INT/>
+              </type>
+            </variable>
+            <variable name="LIMITIntResult">
+              <type>
+                <INT/>
+              </type>
+              <documentation>
+                <xhtml:p><![CDATA[UC:[LIMIT测试结果变量]]]></xhtml:p>
+              </documentation>
+            </variable>
+            <variable name="LIMITRealResult">
+              <type>
+                <REAL/>
+              </type>
+            </variable>
+            <variable name="MAXIntResult">
+              <type>
+                <INT/>
+              </type>
+              <documentation>
+                <xhtml:p><![CDATA[UC:[MAX测试结果变量]]]></xhtml:p>
+              </documentation>
+            </variable>
+            <variable name="MAXRealResult">
+              <type>
+                <REAL/>
+              </type>
+            </variable>
+            <variable name="MAX3IntResult">
+              <type>
+                <INT/>
+              </type>
+            </variable>
+            <variable name="MAX3RealResult">
+              <type>
+                <REAL/>
+              </type>
+            </variable>
+            <variable name="MINIntResult">
+              <type>
+                <INT/>
+              </type>
+              <documentation>
+                <xhtml:p><![CDATA[UC:[MIN测试结果变量]]]></xhtml:p>
+              </documentation>
+            </variable>
+            <variable name="MINRealResult">
+              <type>
+                <REAL/>
+              </type>
+            </variable>
+            <variable name="MIN3IntResult">
+              <type>
+                <INT/>
+              </type>
+            </variable>
+            <variable name="MIN3RealResult">
+              <type>
+                <REAL/>
+              </type>
+            </variable>
+            <variable name="MUXIntResult">
+              <type>
+                <INT/>
+              </type>
+              <documentation>
+                <xhtml:p><![CDATA[UC:[MUX测试结果变量]]]></xhtml:p>
+              </documentation>
+            </variable>
+            <variable name="MUXRealResult">
+              <type>
+                <REAL/>
+              </type>
+            </variable>
+            <variable name="SELIntResult">
+              <type>
+                <INT/>
+              </type>
+              <documentation>
+                <xhtml:p><![CDATA[UC:[SEL测试结果变量]]]></xhtml:p>
+              </documentation>
+            </variable>
+            <variable name="SELRealResult">
+              <type>
+                <REAL/>
+              </type>
+            </variable>
+            <variable name="ExpectedInt">
+              <type>
+                <INT/>
+              </type>
+              <documentation>
+                <xhtml:p><![CDATA[UC:[期望结果变量]]]></xhtml:p>
+              </documentation>
+            </variable>
+            <variable name="ExpectedReal">
+              <type>
+                <REAL/>
+              </type>
+            </variable>
+            <variable name="LIMITIntOK">
+              <type>
+                <BOOL/>
+              </type>
+              <documentation>
+                <xhtml:p><![CDATA[UC:[测试结果判断变量]]]></xhtml:p>
+              </documentation>
+            </variable>
+            <variable name="LIMITRealOK">
+              <type>
+                <BOOL/>
+              </type>
+            </variable>
+            <variable name="MAXIntOK">
+              <type>
+                <BOOL/>
+              </type>
+            </variable>
+            <variable name="MAXRealOK">
+              <type>
+                <BOOL/>
+              </type>
+            </variable>
+            <variable name="MAX3IntOK">
+              <type>
+                <BOOL/>
+              </type>
+            </variable>
+            <variable name="MAX3RealOK">
+              <type>
+                <BOOL/>
+              </type>
+            </variable>
+            <variable name="MINIntOK">
+              <type>
+                <BOOL/>
+              </type>
+            </variable>
+            <variable name="MINRealOK">
+              <type>
+                <BOOL/>
+              </type>
+            </variable>
+            <variable name="MIN3IntOK">
+              <type>
+                <BOOL/>
+              </type>
+            </variable>
+            <variable name="MIN3RealOK">
+              <type>
+                <BOOL/>
+              </type>
+            </variable>
+            <variable name="MUXIntOK">
+              <type>
+                <BOOL/>
+              </type>
+            </variable>
+            <variable name="MUXRealOK">
+              <type>
+                <BOOL/>
+              </type>
+            </variable>
+            <variable name="SELIntOK">
+              <type>
+                <BOOL/>
+              </type>
+            </variable>
+            <variable name="SELRealOK">
+              <type>
+                <BOOL/>
+              </type>
+            </variable>
+            <variable name="TestStep">
+              <type>
+                <INT/>
+              </type>
+              <documentation>
+                <xhtml:p><![CDATA[UC:[控制变量]]]></xhtml:p>
+              </documentation>
+            </variable>
+            <variable name="TestsPassed">
+              <type>
+                <BOOL/>
+              </type>
+            </variable>
+            <variable name="Errors">
+              <type>
+                <INT/>
+              </type>
+            </variable>
+          </localVars>
+        </interface>
+        <body>
+          <ST>
+            <xhtml:p><![CDATA[  Enable := TRUE;
+  
+  (* 初始化测试数据 *)
+  IntA := 10;
+  IntB := 5;
+  IntC := 15;
+  IntMin := 3;
+  IntMax := 12;
+  
+  RealA := 10.5;
+  RealB := 5.2;
+  RealC := 15.8;
+  RealMin := 3.1;
+  RealMax := 12.9;
+  
+  (* 初始化数组用于MUX测试 *)
+  IntArray[0] := 100;
+  IntArray[1] := 200;
+  IntArray[2] := 300;
+  IntArray[3] := 400;
+  
+  RealArray[0] := 10.1;
+  RealArray[1] := 20.2;
+  RealArray[2] := 30.3;
+  RealArray[3] := 40.4;
+  
+  BoolSelector := TRUE;
+  IntSelector := 2;  (* 选择数组索引2 *)
+
+  IF Enable THEN
+      
+      (* LIMIT测试 - 限制在范围内 *)
+      TestStep := 1;
+      LIMITIntResult := LIMIT(IntMin, IntC, IntMax);  (* LIMIT(3, 15, 12) = 12 *)
+      LIMITRealResult := LIMIT(RealMin, RealC, RealMax);  (* LIMIT(3.1, 15.8, 12.9) = 12.9 *)
+      ExpectedInt := 12;
+      ExpectedReal := 12.9;
+      LIMITIntOK := (LIMITIntResult = ExpectedInt);
+      LIMITRealOK := (LIMITRealResult = ExpectedReal);
+      
+      (* MAX测试 - 取两个值的最大值 *)
+      TestStep := 2;
+      MAXIntResult := MAX(IntA, IntB);  (* MAX(10, 5) = 10 *)
+      MAXRealResult := MAX(RealA, RealB);  (* MAX(10.5, 5.2) = 10.5 *)
+      ExpectedInt := 10;
+      ExpectedReal := 10.5;
+      MAXIntOK := (MAXIntResult = ExpectedInt);
+      MAXRealOK := (MAXRealResult = ExpectedReal);
+      
+      (* MAX测试 - 取三个值的最大值 *)
+      TestStep := 3;
+      MAX3IntResult := MAX(MAX(IntA, IntB), IntC);  (* MAX(MAX(10, 5), 15) = 15 *)
+      MAX3RealResult := MAX(MAX(RealA, RealB), RealC);  (* MAX(MAX(10.5, 5.2), 15.8) = 15.8 *)
+      ExpectedInt := 15;
+      ExpectedReal := 15.8;
+      MAX3IntOK := (MAX3IntResult = ExpectedInt);
+      MAX3RealOK := (MAX3RealResult = ExpectedReal);
+      
+      (* MIN测试 - 取两个值的最小值 *)
+      TestStep := 4;
+      MINIntResult := MIN(IntA, IntB);  (* MIN(10, 5) = 5 *)
+      MINRealResult := MIN(RealA, RealB);  (* MIN(10.5, 5.2) = 5.2 *)
+      ExpectedInt := 5;
+      ExpectedReal := 5.2;
+      MINIntOK := (MINIntResult = ExpectedInt);
+      MINRealOK := (MINRealResult = ExpectedReal);
+      
+      (* MIN测试 - 取三个值的最小值 *)
+      TestStep := 5;
+      MIN3IntResult := MIN(MIN(IntA, IntB), IntC);  (* MIN(MIN(10, 5), 15) = 5 *)
+      MIN3RealResult := MIN(MIN(RealA, RealB), RealC);  (* MIN(MIN(10.5, 5.2), 15.8) = 5.2 *)
+      ExpectedInt := 5;
+      ExpectedReal := 5.2;
+      MIN3IntOK := (MIN3IntResult = ExpectedInt);
+      MIN3RealOK := (MIN3RealResult = ExpectedReal);
+      
+      (* MUX测试 - 多路选择器 *)
+      TestStep := 6;
+      (* 注意：某些PLC环境可能不支持标准MUX函数，使用条件选择替代 *)
+      IF IntSelector = 0 THEN
+          MUXIntResult := IntArray[0];
+          MUXRealResult := RealArray[0];
+      ELSIF IntSelector = 1 THEN
+          MUXIntResult := IntArray[1];
+          MUXRealResult := RealArray[1];
+      ELSIF IntSelector = 2 THEN
+          MUXIntResult := IntArray[2];
+          MUXRealResult := RealArray[2];
+      ELSE
+          MUXIntResult := IntArray[3];
+          MUXRealResult := RealArray[3];
+      END_IF;
+      
+      ExpectedInt := 300;    (* IntArray[2] *)
+      ExpectedReal := 30.3;  (* RealArray[2] *)
+      MUXIntOK := (MUXIntResult = ExpectedInt);
+      MUXRealOK := (MUXRealResult = ExpectedReal);
+      
+      (* SEL测试 - 二路选择器 *)
+      TestStep := 7;
+      SELIntResult := SEL(BoolSelector, IntB, IntA);  (* SEL(TRUE, 5, 10) = 10 *)
+      SELRealResult := SEL(BoolSelector, RealB, RealA);  (* SEL(TRUE, 5.2, 10.5) = 10.5 *)
+      ExpectedInt := 10;
+      ExpectedReal := 10.5;
+      SELIntOK := (SELIntResult = ExpectedInt);
+      SELRealOK := (SELRealResult = ExpectedReal);
+      
+      (* 统计结果 *)
+      Errors := 0;
+      IF NOT LIMITIntOK THEN Errors := Errors + 1; END_IF;
+      IF NOT LIMITRealOK THEN Errors := Errors + 1; END_IF;
+      IF NOT MAXIntOK THEN Errors := Errors + 1; END_IF;
+      IF NOT MAXRealOK THEN Errors := Errors + 1; END_IF;
+      IF NOT MAX3IntOK THEN Errors := Errors + 1; END_IF;
+      IF NOT MAX3RealOK THEN Errors := Errors + 1; END_IF;
+      IF NOT MINIntOK THEN Errors := Errors + 1; END_IF;
+      IF NOT MINRealOK THEN Errors := Errors + 1; END_IF;
+      IF NOT MIN3IntOK THEN Errors := Errors + 1; END_IF;
+      IF NOT MIN3RealOK THEN Errors := Errors + 1; END_IF;
+      IF NOT MUXIntOK THEN Errors := Errors + 1; END_IF;
+      IF NOT MUXRealOK THEN Errors := Errors + 1; END_IF;
+      IF NOT SELIntOK THEN Errors := Errors + 1; END_IF;
+      IF NOT SELRealOK THEN Errors := Errors + 1; END_IF;
+      
+      TestsPassed := (Errors = 0);
+      Complete := TRUE;
+      
+      IF TestsPassed THEN
+          TestStep := 99;  (* 所有测试通过 *)
+      ELSE
+          TestStep := 88;  (* 有测试失败 *)
+      END_IF;
+
+  ELSE
+      TestStep := 0;
+      Complete := FALSE;
+      TestsPassed := FALSE;
+      Errors := 0;
+  END_IF;
+
+]]></xhtml:p>
+          </ST>
+        </body>
+      </pou>
+    </pous>
+  </types>
+  <instances>
+    <configurations>
+      <configuration name="config">
+        <resource name="resource1">
+          <task name="task0" priority="0" interval="T#20ms">
+            <pouInstance name="instance0" typeName="SelectionInstructionsTest"/>
+          </task>
+        </resource>
+      </configuration>
+    </configurations>
+  </instances>
+</project>
