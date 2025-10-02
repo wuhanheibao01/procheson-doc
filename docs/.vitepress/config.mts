@@ -10,8 +10,8 @@ const { rewrites } = await usePosts();
 
 export default defineConfig({
   lang: 'zh-CN',
-  title: "Procheson PLC ST测试报告",
-  description: "Procheson PLC结构化文本指令测试报告平台",
+  title: "Procheson PLC测试报告",
+  description: "Procheson PLC指令测试报告平台",
   rewrites,
 
   // #region fav

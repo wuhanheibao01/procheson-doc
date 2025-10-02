@@ -20,6 +20,9 @@ hero:
       text: 测试说明
       link: /LubanTest/
 
+    - theme: brand
+      text: 测试总结
+      link: /LubanTest/5.4 项目成果汇报总结
 features:
   - icon: 🧪
     title: 全面测试覆盖
@@ -40,3 +43,46 @@ features:
 <confetti />
 
 <busuanzi />
+
+
+
+<style>
+.custom-actions {
+  margin: 2rem 0;
+  text-align: center;
+}
+
+.action-button {
+  display: inline-block;
+  padding: 0.75rem 1.5rem;
+  border-radius: 8px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  margin: 0 0.5rem;
+}
+
+.action-button.primary {
+  background-color: var(--vp-c-brand);
+  color: white;
+  border: 2px solid var(--vp-c-brand);
+}
+
+.action-button.primary:hover {
+  background-color: var(--vp-c-brand-dark);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+@media (max-width: 768px) {
+  .custom-actions {
+    margin: 1rem 0;
+  }
+  
+  .action-button {
+    display: block;
+    margin: 0.5rem auto;
+    width: 80%;
+  }
+}
+</style>
