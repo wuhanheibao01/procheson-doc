@@ -52,7 +52,8 @@ export default {
     app.component('ArticleMetadata' , ArticleMetadata) //字数阅读时间
     app.component('Linkcard' , Linkcard) //链接卡片
     app.component('fluidborder' , fluidborder) //流体边框仅用于演示
-
+    app.component('MouseClick' , MouseClick)
+    app.component('MouseFollower' , MouseFollower)
     // 不蒜子
     if (inBrowser) {
       NProgress.configure({ showSpinner: false })

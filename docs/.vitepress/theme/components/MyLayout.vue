@@ -52,8 +52,9 @@ provide('toggle-appearance', async ({ clientX: x, clientY: y }: MouseEvent) => {
       <backtotop />
     </template>
     <template #layout-top>
-      <!-- 移除了notice组件 -->
-      <!-- 移除了鼠标效果组件 -->
+      <MouseFollower />
+      <MouseClick />
+       <notice />
     </template>
     <template #layout-bottom>
       <bsz />
